@@ -6,7 +6,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <section className="flex flex-col items-center">
         <h1 className="text-3xl mb-3 font-bold">Noman Ahmed</h1>
-        <h2 className="w-lg text-center">
+        <h2 className="w-md lg:w-lg  text-center">
           Front-End Developer | React, TypeScript, Tailwind CSS | Building
           Production-Ready Templates @GridPixels
         </h2>
