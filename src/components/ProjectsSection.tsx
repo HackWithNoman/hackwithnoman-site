@@ -20,7 +20,7 @@ const projects = [
 
 const ProjectsSection = () => {
   return (
-    <section className="mb-12">
+    <section className="mb-12" id="projects">
       <h2 className="text-2xl font-bold mb-4">Projects</h2>
       <hr className="border-gray-200 mb-4" />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

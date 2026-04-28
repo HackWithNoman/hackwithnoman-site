@@ -8,8 +8,8 @@ const blogPosts = [
 
 const BlogNotesSection = () => {
   return (
-    <section className="mb-12">
-      <h2 className="text-2xl font-bold mb-4">Blog & Notes</h2>
+    <section className="mb-12" id="blog">
+      <h2 className="text-2xl font-bold mb-4">Blog</h2>
       <hr className="border-gray-200 mb-4" />
       <div className="space-y-0">
         {blogPosts.map((post) => (

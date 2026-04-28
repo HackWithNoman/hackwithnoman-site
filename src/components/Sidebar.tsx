@@ -1,9 +1,10 @@
-import { Terminal, Pencil, User, Moon } from "lucide-react";
+import { Terminal, User, Moon } from "lucide-react";
+import Link from "next/link";
 
 const navItems = [
-  { icon: Terminal, label: "Blog" },
-  { icon: User, label: "Projects" },
-  { icon: Terminal, label: "About Me" },
+  { icon: Terminal, label: "Blog", link: "#blog" },
+  { icon: User, label: "Projects", link: "#projects" },
+  { icon: Terminal, label: "About Me", link: "#home" },
 ];
 
 const socialLinks = [
@@ -12,11 +13,7 @@ const socialLinks = [
   { label: "RSS feed", href: "#" },
 ];
 
-interface SidebarProps {
-  onNavClick?: () => void;
-}
-
-const Sidebar = ({ onNavClick }: SidebarProps) => {
+const Sidebar = () => {
   return (
     <aside className="w-full p-8 bg-[#FAF9F6] md:h-screen md:overflow-y-auto md:border-r md:border-[#E5E7EB]">
       {/* Header Section */}
@@ -61,14 +58,13 @@ const Sidebar = ({ onNavClick }: SidebarProps) => {
             const Icon = item.icon;
             return (
               <li key={item.label}>
-                <a
-                  href="#"
-                  onClick={onNavClick}
+                <Link
+                  href={item.link}
                   className="flex items-center gap-3 text-[1rem] font-bold text-[#111827] hover:text-[#D84B7E] transition-colors"
                 >
                   <Icon size={18} strokeWidth={1.5} />
                   <span>{item.label}</span>
-                </a>
+                </Link>
               </li>
             );
           })}
@@ -86,7 +82,6 @@ const Sidebar = ({ onNavClick }: SidebarProps) => {
             <a
               key={item.label}
               href={item.href}
-              onClick={onNavClick}
               className="text-[0.875rem] text-[#6B7280] hover:underline transition-colors"
             >
               {item.label}

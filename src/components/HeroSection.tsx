@@ -1,9 +1,9 @@
-import React from "react";
-import { User, Mail } from "lucide-react";
+import { Download } from "lucide-react";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
-    <section className="py-16 md:py-20 bg-[#F9F7F2]">
+    <section className="py-16 md:py-20 bg-[#F9F7F2]" id="home">
       <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
         {/* Text Content - 65% width */}
         <div className="w-full md:w-[65%]">
@@ -17,9 +17,9 @@ const HeroSection = () => {
             <p className="text-[1.125rem] leading-[1.7] text-[#111827]">
               I'm a developer, writer, and creator. I build things for the web
               and share what I learn{" "}
-              <a href="#" className="text-[#D84B7E] underline">
+              <Link href="/" className="text-[#D84B7E] underline">
                 writing on this blog
-              </a>
+              </Link>
               .
             </p>
             <p className="text-[1.125rem] leading-[1.7] text-[#111827]">
@@ -31,14 +31,14 @@ const HeroSection = () => {
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-4 mt-8">
             <button className="bg-[#F3F1ED] border border-[#E5E7EB] px-4 py-2 rounded-sm flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <User size={16} strokeWidth={1.5} className="text-[#A1365D]" />
-              <span className="text-[#A1365D] font-medium">About Me</span>
-            </button>
-            <button className="bg-[#F3F1ED] border border-[#E5E7EB] px-4 py-2 rounded-sm flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <Mail size={16} strokeWidth={1.5} className="text-[#A1365D]" />
-              <span className="text-[#A1365D] font-medium">
-                Email Newsletter
-              </span>
+              <Download
+                size={16}
+                strokeWidth={1.5}
+                className="text-[#A1365D]"
+              />
+              <Link href="/" className="text-[#A1365D] font-medium">
+                Download CV
+              </Link>
             </button>
           </div>
         </div>
