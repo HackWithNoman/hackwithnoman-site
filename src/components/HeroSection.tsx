@@ -1,4 +1,5 @@
 import { Download } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const HeroSection = () => {
@@ -46,14 +47,13 @@ const HeroSection = () => {
         {/* Illustration Placeholder - 35% width */}
         <div className="w-full md:w-[35%] flex justify-center md:justify-end">
           <div className="relative w-64 h-64 md:w-80 md:h-80">
-            {/* Pink circle background */}
-            <div className="absolute inset-0 rounded-full bg-[#D84B7E] opacity-90" />
-
-            {/* Character/Graphic (placeholder) */}
-            <div className="absolute inset-0 flex items-center justify-center overflow-visible">
-              <div className="w-40 h-40 md:w-48 md:h-48 bg-[#F3F1ED] rounded-lg shadow-lg transform translate-y-4 translate-x-4" />
-              <div className="absolute top-8 right-8 w-20 h-20 bg-[#A1365D] rounded-full opacity-75" />
-            </div>
+            <Image
+              src="/avatar.jpg"
+              alt="Noman"
+              className="w-full h-full object-cover rounded-md"
+              width={500}
+              height={500}
+            />
           </div>
         </div>
       </div>

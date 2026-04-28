@@ -66,6 +66,8 @@ const TopNav = () => {
 
             {/* Utility Icons */}
             <div className="flex items-center gap-2">
+              {/* Pink circular indicator */}
+              <span className="w-3 h-3 rounded-full bg-[#D84B7E]" />
               {/* Moon icon for dark mode */}
               <Moon size={18} strokeWidth={1.5} className="text-[#111827]" />
             </div>
@@ -108,19 +110,20 @@ const TopNav = () => {
                 </h1>
               </div>
               <div className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded-full bg-[#D84B7E]" />
                 <Moon size={18} strokeWidth={1.5} className="text-[#111827]" />
               </div>
             </div>
 
-            {/* About Me Section */}
-            <div className="mb-6">
-              <h2 className="text-[1rem] font-bold mb-4">About Me</h2>
-              <p className="text-[0.875rem] leading-[1.5] text-[#374151]">
-                Hi, I'm <span className="text-[#D84B7E]">Noman</span>! I'm a
-                developer, writer, and creator. I build things for the web and
-                share what I learn. 🌱
-              </p>
+            {/* Profile Image for Mobile */}
+            <div className="w-20 h-20 rounded-full bg-gray-200 mb-4 overflow-hidden mx-auto">
+              <img
+                src="https://images.pexels.com/photos/4487599/pexels-photo-4487599.jpeg"
+                alt="Noman"
+                className="w-full h-full object-cover"
+              />
             </div>
+            <p className="text-center text-sm text-gray-500 mb-6">Front-End Developer</p>
 
             <hr className="border-[#E5E7EB] my-6" />
 
