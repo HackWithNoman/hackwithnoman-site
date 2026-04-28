@@ -1,4 +1,3 @@
-import React from "react";
 import { Palette, Zap, Wrench } from "lucide-react";
 
 const deepDives = [

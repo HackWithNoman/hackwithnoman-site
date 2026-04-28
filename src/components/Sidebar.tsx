@@ -1,60 +1,73 @@
-import { Home, FileText, Search, Code, Wrench, Mail } from "lucide-react";
-import { SiGithub, SiX, SiLinkedin } from "react-icons/si";
+import { Terminal, Pencil, User, Moon } from "lucide-react";
 
 const navItems = [
-  { icon: Home, label: "Home" },
-  { icon: FileText, label: "Blog" },
-  { icon: Search, label: "Deep Dives" },
-  { icon: Code, label: "Projects" },
-  { icon: Wrench, label: "Tools" },
-  { icon: Mail, label: "Contact" },
+  { icon: Terminal, label: "Blog" },
+  { icon: User, label: "Projects" },
+  { icon: Terminal, label: "About Me" },
 ];
 
 const socialLinks = [
-  { icon: SiX, label: "Twitter", href: "#" },
-  { icon: SiLinkedin, label: "LinkedIn", href: "#" },
-  { icon: SiGithub, label: "GitHub", href: "#" },
+  { label: "Email signup", href: "#" },
+  { label: "Bluesky", href: "#" },
+  { label: "RSS feed", href: "#" },
 ];
 
-const Sidebar = () => {
+interface SidebarProps {
+  onNavClick?: () => void;
+}
+
+const Sidebar = ({ onNavClick }: SidebarProps) => {
   return (
-    <aside className="w-full md:w-1/5 md:sticky md:top-0 p-6 md:h-screen md:overflow-y-auto border-r border-gray-200">
-      {/* Profile Image */}
-      <div className="w-24 h-24 rounded-full bg-gray-200 mb-6 overflow-hidden ring-2 ring-gray-100">
-        <img
-          src="https://images.pexels.com/photos/4487599/pexels-photo-4487599.jpeg"
-          alt="Profile"
-          className="w-full h-full object-cover"
-        />
+    <aside className="w-full p-8 bg-[#FAF9F6] md:h-screen md:overflow-y-auto md:border-r md:border-[#E5E7EB]">
+      {/* Header Section */}
+      <div className="flex items-center gap-3 mb-6">
+        {/* Floppy disk icon/emoji */}
+        <span className="text-xl" role="img" aria-label="floppy disk">
+          💾
+        </span>
+
+        {/* Name/Title */}
+        <div className="flex-1">
+          <h1 className="text-[1.125rem] font-bold text-[#111827]">Noman</h1>
+        </div>
+
+        {/* Utility Icons */}
+        <div className="flex items-center gap-2">
+          {/* Moon icon for dark mode */}
+          <Moon size={18} strokeWidth={1.5} className="text-[#111827]" />
+        </div>
       </div>
 
-      {/* Name/Title */}
-      <div className="mb-6">
-        <h1 className="text-xl font-bold mb-1">Noman</h1>
-        <p className="text-sm text-gray-500">Front-End Developer</p>
-      </div>
+      {/* Divider */}
+      <hr className="border-[#E5E7EB] my-6" />
 
-      {/* About Me */}
+      {/* About Me Section */}
       <div className="mb-8">
-        <p className="text-sm text-gray-600 leading-relaxed">
-          Developer, writer, and creator. I build things for the web and share
-          what I learn.
+        <h2 className="text-[1rem] font-bold mb-4">About Me</h2>
+        <p className="text-[0.875rem] leading-[1.5] text-[#374151]">
+          Hi, I'm <span className="text-[#D84B7E]">Noman</span>! I'm a
+          developer, writer, and creator. I build things for the web and share
+          what I learn. 🌱
         </p>
       </div>
 
-      {/* Vertical Nav */}
+      {/* Divider */}
+      <hr className="border-[#E5E7EB] my-6" />
+
+      {/* Primary Navigation */}
       <nav className="mb-8">
-        <ul className="space-y-1">
+        <ul className="space-y-3">
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
               <li key={item.label}>
                 <a
                   href="#"
-                  className="flex items-center gap-3 text-sm text-gray-600 px-3 py-2 pl-0 hover:pl-3 hover:border-l-2 hover:border-blue-600 hover:text-blue-600 transition-all duration-150"
+                  onClick={onNavClick}
+                  className="flex items-center gap-3 text-[1rem] font-bold text-[#111827] hover:text-[#D84B7E] transition-colors"
                 >
-                  <Icon size={16} strokeWidth={1.5} className="text-gray-400" />
-                  <span className="font-medium">{item.label}</span>
+                  <Icon size={18} strokeWidth={1.5} />
+                  <span>{item.label}</span>
                 </a>
               </li>
             );
@@ -62,27 +75,23 @@ const Sidebar = () => {
         </ul>
       </nav>
 
-      <hr className="border-gray-200 mb-6" />
+      {/* Divider */}
+      <hr className="border-[#E5E7EB] my-6" />
 
-      {/* Stay Connected */}
+      {/* Stay Connected Section */}
       <div>
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
-          Stay Connected
-        </h3>
+        <h3 className="text-[1rem] font-bold mb-4">Stay Connected</h3>
         <div className="flex flex-col gap-2">
-          {socialLinks.map((item) => {
-            const Icon = item.icon;
-            return (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-sm text-gray-600 flex items-center gap-2 hover:text-blue-600 transition-colors duration-150"
-              >
-                <Icon size={14} />
-                {item.label}
-              </a>
-            );
-          })}
+          {socialLinks.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={onNavClick}
+              className="text-[0.875rem] text-[#6B7280] hover:underline transition-colors"
+            >
+              {item.label}
+            </a>
+          ))}
         </div>
       </div>
     </aside>
