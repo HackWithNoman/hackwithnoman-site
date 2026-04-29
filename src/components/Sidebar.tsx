@@ -4,7 +4,7 @@ import { Terminal, User, Briefcase, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiX, SiLinkedin, SiGithub } from "react-icons/si";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const navItems = [
   { icon: Terminal, label: "Blog", link: "#blog" },
@@ -22,7 +22,7 @@ interface SidebarProps {
   onNavClick?: () => void;
 }
 
-const sidebarVariants = {
+const sidebarVariants: Variants = {
   hidden: { opacity: 0, x: -30 },
   show: {
     opacity: 1,
@@ -36,7 +36,7 @@ const sidebarVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, x: -15 },
   show: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 300, damping: 24 } },
 };

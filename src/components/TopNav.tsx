@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Terminal, Briefcase, User, Menu, X, MapPin } from "lucide-react";
+import { Terminal, Briefcase, User, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiX, SiLinkedin, SiGithub } from "react-icons/si";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 const navItems = [
   { icon: Terminal, label: "Blog", link: "#blog" },
@@ -20,7 +20,7 @@ const socialLinks = [
 ];
 
 // Framer Motion Variants
-const menuContainerVariants = {
+const menuContainerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -32,13 +32,13 @@ const menuContainerVariants = {
   },
 };
 
-const menuItemVariants = {
+const menuItemVariants: Variants = {
   hidden: { opacity: 0, x: -20 },
   show: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 300, damping: 24 } },
   exit: { opacity: 0, x: -20, transition: { duration: 0.2 } },
 };
 
-const socialContainerVariants = {
+const socialContainerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
