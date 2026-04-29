@@ -19,7 +19,7 @@ const PortfolioPage = () => {
 
       <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row">
         {/* Left Sidebar - visible on lg+ */}
-        <div className="hidden lg:block lg:w-1/5 lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto lg:border-r lg:border-custom">
+        <div className="hidden lg:block lg:w-1/5 lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto">
           <Sidebar />
         </div>
 
