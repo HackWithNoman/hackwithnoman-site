@@ -48,7 +48,7 @@ const SkillsSection = () => {
   return (
     <section className="mb-12">
       <h2 className="text-2xl font-bold mb-4">Skills & Expertise</h2>
-      <hr className="border-[#E5E7EB] mb-6" />
+      <hr className="border-border mb-6" />
       
       <div className="flex flex-wrap gap-3">
         {skills.map((skill) => {
@@ -58,16 +58,16 @@ const SkillsSection = () => {
           return (
             <span
               key={skill.label}
-              className="border border-gray-200 rounded px-3 py-2 text-sm flex items-center gap-2 bg-white hover:border-gray-300 transition-colors"
+              className="border border-border rounded px-3 py-2 text-sm flex items-center gap-2 bg-white hover:border-border-gray transition-colors"
             >
               {isSiIcon ? (
                 // For react-icons/si components
-                <Icon size={14} className="text-[#D84B7E]" />
+                <Icon size={14} className="text-accent" />
               ) : (
                 // For lucide-react components
-                <Icon size={14} strokeWidth={1.5} className="text-[#D84B7E]" />
+                <Icon size={14} strokeWidth={1.5} className="text-accent" />
               )}
-              <span className="text-[#111827]">{skill.label}</span>
+              <span className="text-text-primary">{skill.label}</span>
             </span>
           );
         })}

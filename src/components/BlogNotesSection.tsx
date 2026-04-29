@@ -10,17 +10,17 @@ const BlogNotesSection = () => {
   return (
     <section className="mb-12" id="blog">
       <h2 className="text-2xl font-bold mb-4">Blog</h2>
-      <hr className="border-gray-200 mb-4" />
+      <hr className="border-border mb-4" />
       <div className="space-y-0">
         {blogPosts.map((post) => (
           <div
             key={post.title}
-            className="flex justify-between items-center py-3 border-b border-gray-200"
+            className="flex justify-between items-center py-3 border-b border-border"
           >
-            <span className="text-gray-500 text-sm w-24">{post.date}</span>
+            <span className="text-text-secondary text-sm w-24">{post.date}</span>
             <a
               href="#"
-              className="text-blue-600 underline font-semibold flex-1 hover:opacity-80"
+              className="text-accent underline font-semibold flex-1 hover:opacity-80"
             >
               {post.title}
             </a>
