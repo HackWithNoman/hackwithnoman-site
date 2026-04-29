@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { useState, ChangeEvent, FormEvent } from "react";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -10,9 +9,9 @@ const ContactSection = () => {
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // null, 'success', 'error'
+  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null); // null, 'success', 'error'
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -24,7 +23,7 @@ const ContactSection = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     
