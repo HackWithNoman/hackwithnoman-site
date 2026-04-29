@@ -48,7 +48,7 @@ const TopNav = () => {
   return (
     <>
       {/* Top Navigation Bar */}
-      <nav className="bg-[#FAF9F6] border-b border-[#E5E7EB] px-8 py-4">
+      <nav className="bg-primary border-b border-border px-8 py-4">
         <div className="max-w-[1200px] mx-auto flex items-center justify-between">
           {/* Header Section - Same as Sidebar */}
           <div className="flex items-center gap-3">
@@ -59,7 +59,7 @@ const TopNav = () => {
 
             {/* Name/Title */}
             <div className="flex-1">
-              <h1 className="text-[1.125rem] font-bold text-[#111827]">
+              <h1 className="text-[1.125rem] font-bold text-text-primary">
                 Noman
               </h1>
             </div>
@@ -67,16 +67,16 @@ const TopNav = () => {
             {/* Utility Icons */}
             <div className="flex items-center gap-2">
               {/* Pink circular indicator */}
-              <span className="w-3 h-3 rounded-full bg-[#D84B7E]" />
+              <span className="w-3 h-3 rounded-full bg-accent" />
               {/* Moon icon for dark mode */}
-              <Moon size={18} strokeWidth={1.5} className="text-[#111827]" />
+              <Moon size={18} strokeWidth={1.5} className="text-text-primary" />
             </div>
           </div>
 
           {/* Hamburger Button - visible below lg */}
           <button
             onClick={openMobileMenu}
-            className="lg:hidden p-2 border border-[#E5E7EB] rounded-md ml-4"
+            className="lg:hidden p-2 border border-border rounded-md ml-4"
             aria-label="Open navigation menu"
           >
             <Menu size={20} strokeWidth={1.5} />
@@ -86,7 +86,7 @@ const TopNav = () => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-[#FAF9F6] overflow-y-auto">
+        <div className="fixed inset-0 z-50 bg-primary overflow-y-auto">
           {/* Close Button */}
           <div className="flex justify-end p-4">
             <button
@@ -99,33 +99,33 @@ const TopNav = () => {
           </div>
 
           {/* Header Section (same as sidebar) */}
-          <div className="px-8 pt-4 pb-6 border-b border-[#E5E7EB]">
+          <div className="px-8 pt-4 pb-6 border-b border-border">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-xl" role="img" aria-label="floppy disk">
                 💾
               </span>
               <div className="flex-1">
-                <h1 className="text-[1.125rem] font-bold text-[#111827]">
+                <h1 className="text-[1.125rem] font-bold text-text-primary">
                   Noman
                 </h1>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-[#D84B7E]" />
-                <Moon size={18} strokeWidth={1.5} className="text-[#111827]" />
+                <span className="w-3 h-3 rounded-full bg-accent" />
+                <Moon size={18} strokeWidth={1.5} className="text-text-primary" />
               </div>
             </div>
 
             {/* Profile Image for Mobile */}
-            <div className="w-20 h-20 rounded-full bg-gray-200 mb-4 overflow-hidden mx-auto">
+            <div className="w-20 h-20 rounded-full bg-border mb-4 overflow-hidden mx-auto">
               <img
                 src="https://images.pexels.com/photos/4487599/pexels-photo-4487599.jpeg"
                 alt="Noman"
                 className="w-full h-full object-cover"
               />
             </div>
-            <p className="text-center text-sm text-gray-500 mb-6">Front-End Developer</p>
+            <p className="text-center text-sm text-text-secondary mb-6">Front-End Developer</p>
 
-            <hr className="border-[#E5E7EB] my-6" />
+            <hr className="border-border my-6" />
 
             {/* Primary Navigation */}
             <nav className="mb-6">
@@ -137,7 +137,7 @@ const TopNav = () => {
                       <a
                         href="#"
                         onClick={closeMobileMenu}
-                        className="flex items-center gap-3 text-[1rem] font-bold text-[#111827] hover:text-[#D84B7E] transition-colors"
+                        className="flex items-center gap-3 text-[1rem] font-bold text-text-primary hover:text-accent transition-colors"
                       >
                         <Icon size={18} strokeWidth={1.5} />
                         <span>{item.label}</span>
@@ -148,7 +148,7 @@ const TopNav = () => {
               </ul>
             </nav>
 
-            <hr className="border-[#E5E7EB] my-6" />
+            <hr className="border-border my-6" />
 
             {/* Stay Connected Section */}
             <div>
@@ -159,7 +159,7 @@ const TopNav = () => {
                     key={item.label}
                     href={item.href}
                     onClick={closeMobileMenu}
-                    className="text-[0.875rem] text-[#6B7280] hover:underline transition-colors"
+                    className="text-[0.875rem] text-text-secondary hover:underline transition-colors"
                   >
                     {item.label}
                   </a>

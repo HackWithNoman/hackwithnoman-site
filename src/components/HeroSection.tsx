@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const HeroSection = () => {
   return (
-    <section className="py-16 md:py-20 bg-light" id="home">
+    <section className="py-16 md:py-20" id="home">
       <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
         {/* Text Content - 65% width */}
         <div className="w-full md:w-[65%]">

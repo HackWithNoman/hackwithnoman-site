@@ -20,10 +20,10 @@ interface SidebarProps {
 
 const Sidebar = ({ onNavClick }: SidebarProps) => {
   return (
-    <aside className="w-full p-8 bg-[#FAF9F6] md:h-screen md:overflow-y-auto md:border-r md:border-[#E5E7EB]">
+    <aside className="w-full p-8 bg-primary md:h-screen md:overflow-y-auto md:border-r md:border-border">
       {/* Profile Image as Logo */}
       <a href="/" className="flex items-start mb-4">
-        <div className="w-16 h-16 rounded-full bg-gray-200 overflow-hidden">
+        <div className="w-16 h-16 rounded-full bg-border overflow-hidden">
           <Image
             src="/avatar.jpg"
             alt="Noman"
@@ -34,7 +34,7 @@ const Sidebar = ({ onNavClick }: SidebarProps) => {
         </div>
       </a>
 
-      <hr className="border-[#E5E7EB] my-6" />
+      <hr className="border-border my-6" />
 
       {/* Primary Navigation */}
       <nav className="mb-8">
@@ -46,7 +46,7 @@ const Sidebar = ({ onNavClick }: SidebarProps) => {
                 <a
                   href={item.link}
                   onClick={onNavClick}
-                  className="flex items-center gap-3 text-[1rem] font-bold text-[#111827] hover:text-[#D84B7E] transition-colors"
+                  className="flex items-center gap-3 text-[1rem] font-bold text-text-primary hover:text-accent transition-colors"
                 >
                   <Icon size={18} strokeWidth={1.5} />
                   <span>{item.label}</span>
@@ -57,7 +57,7 @@ const Sidebar = ({ onNavClick }: SidebarProps) => {
         </ul>
       </nav>
 
-      <hr className="border-[#E5E7EB] my-6" />
+      <hr className="border-border my-6" />
 
       {/* Stay Connected Section with Icons */}
       <div>
@@ -70,7 +70,7 @@ const Sidebar = ({ onNavClick }: SidebarProps) => {
                 key={item.label}
                 href={item.href}
                 onClick={onNavClick}
-                className="flex items-center gap-2 text-[0.875rem] text-[#6B7280] hover:text-[#D84B7E] transition-colors"
+                className="flex items-center gap-2 text-[0.875rem] text-text-secondary hover:text-accent transition-colors"
               >
                 <Icon size={14} />
                 {item.label}
