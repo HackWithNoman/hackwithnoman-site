@@ -29,4 +29,17 @@
   --color-error-bg: #FEE2E2;
   --color-error-border: #FECACA;
   --color-error-text: #991B1B;
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes spin-slow-reverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+
+  --animate-spin-slow: spin-slow 8s linear infinite;
+  --animate-spin-slow-reverse: spin-slow-reverse 12s linear infinite;
 }
