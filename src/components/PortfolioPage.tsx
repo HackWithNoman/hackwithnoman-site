@@ -13,7 +13,7 @@ const PortfolioPage = () => {
   return (
     <div className="bg-primary font-['Inter',_system-ui,_sans-serif] text-custom-primary min-h-screen">
       {/* Top Navigation - visible below lg */}
-      <div className="lg:hidden">
+      <div className="lg:hidden sticky top-0 z-40">
         <TopNav />
       </div>
 
