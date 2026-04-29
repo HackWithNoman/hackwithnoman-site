@@ -5,11 +5,9 @@ import TopNav from "./TopNav";
 import HeroSection from "./HeroSection";
 import AboutSection from "./AboutSection";
 import BlogNotesSection from "./BlogNotesSection";
-import DeepDivesSection from "./DeepDivesSection";
 import ProjectsSection from "./ProjectsSection";
-import ToolsSection from "./ToolsSection";
+import SkillsSection from "./SkillsSection";
 import ContactSection from "./ContactSection";
-import Footer from "./Footer";
 
 const PortfolioPage = () => {
   return (
@@ -25,18 +23,16 @@ const PortfolioPage = () => {
           <Sidebar />
         </div>
 
-        {/* Main Content */}
-        <main className="w-full md:w-4/5 p-6 md:p-12 mx-auto lg:mx-0">
-          <HeroSection />
-          <AboutSection />
-          <BlogNotesSection />
-          <DeepDivesSection />
-          <ProjectsSection />
-          <ToolsSection />
-          <ContactSection />
-        </main>
+       {/* Main Content */}
+       <main className="w-full md:w-4/5 p-6 md:p-12 mx-auto lg:mx-0">
+         <HeroSection />
+         <AboutSection />
+         <BlogNotesSection />
+         <ProjectsSection />
+          <SkillsSection />
+         <ContactSection />
+       </main>
       </div>
-      <Footer />
     </div>
   );
 };
