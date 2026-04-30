@@ -1,4 +1,14 @@
-import { useState, ChangeEvent, FormEvent } from "react";
+"use client";
+
+import React, { useState, ChangeEvent, FormEvent, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Sparkles, Send, CheckCircle2, AlertCircle } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +19,26 @@ const ContactSection = () => {
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null); // null, 'success', 'error'
+  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".form-group", {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 85%",
+        },
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power2.out",
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -17,7 +46,6 @@ const ContactSection = () => {
       ...prev,
       [name]: value
     }));
-    // Clear error status when user starts typing
     if (submitStatus === 'error') {
       setSubmitStatus(null);
     }
@@ -28,10 +56,8 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      // In a real app, you would send this data to your backend
       console.log("Form submitted:", formData);
       
       setSubmitStatus('success');
@@ -50,104 +76,130 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="mb-12" id="contact">
-      <h2 className="text-2xl font-bold mb-4">Contact</h2>
-      <hr className="border-border mb-6" />
-      
-      {submitStatus === 'success' && (
-        <div className="bg-success-bg border border-success-border rounded-lg px-4 py-3 mb-6 text-[0.875rem] text-success-text flex items-center gap-2">
-          Message sent successfully! I'll get back to you soon.
+    <section className="py-20" id="contact">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <div className="flex items-center gap-4 mb-16">
+          <div className="flex items-center gap-2">
+            <Sparkles size={18} className="text-accent" />
+            <h2 className="text-2xl font-black text-text-primary tracking-tight">Let's Connect</h2>
+          </div>
+          <div className="h-[1px] flex-1 bg-border" />
         </div>
-      )}
+      </motion.div>
       
-      {submitStatus === 'error' && (
-        <div className="bg-error-bg border border-error-border rounded-lg px-4 py-3 mb-6 text-[0.875rem] text-error-text flex items-center gap-2">
-          Failed to send message. Please try again.
-        </div>
-      )}
-      
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label htmlFor="name" className="block mb-1 text-sm font-medium text-text-primary">
-              Name
+      <div ref={containerRef} className="max-w-2xl">
+        <AnimatePresence mode="wait">
+          {submitStatus === 'success' && (
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, height: 0 }}
+              className="bg-accent/10 border border-accent/20 rounded-2xl px-6 py-4 mb-8 text-[0.875rem] text-accent font-bold flex items-center gap-3"
+            >
+              <CheckCircle2 size={18} />
+              Message sent successfully! I'll get back to you soon.
+            </motion.div>
+          )}
+          
+          {submitStatus === 'error' && (
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, height: 0 }}
+              className="bg-error-bg border border-error-border rounded-2xl px-6 py-4 mb-8 text-[0.875rem] text-error-text font-bold flex items-center gap-3"
+            >
+              <AlertCircle size={18} />
+              Failed to send message. Please try again.
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="form-group flex flex-col gap-2">
+              <label htmlFor="name" className="text-[0.65rem] font-black uppercase tracking-[0.2em] text-text-secondary ml-2">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full px-5 py-4 bg-primary/30 border border-border rounded-xl focus:outline-none focus:border-accent focus:bg-transparent transition-all duration-300 text-sm placeholder:text-text-secondary/50"
+                placeholder="John Doe"
+                required
+              />
+            </div>
+            
+            <div className="form-group flex flex-col gap-2">
+              <label htmlFor="email" className="text-[0.65rem] font-black uppercase tracking-[0.2em] text-text-secondary ml-2">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-5 py-4 bg-primary/30 border border-border rounded-xl focus:outline-none focus:border-accent focus:bg-transparent transition-all duration-300 text-sm placeholder:text-text-secondary/50"
+                placeholder="john@example.com"
+                required
+              />
+            </div>
+          </div>
+          
+          <div className="form-group flex flex-col gap-2">
+            <label htmlFor="subject" className="text-[0.65rem] font-black uppercase tracking-[0.2em] text-text-secondary ml-2">
+              Subject
             </label>
             <input
               type="text"
-              id="name"
-              name="name"
-              value={formData.name}
+              id="subject"
+              name="subject"
+              value={formData.subject}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-border-gray rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-200"
-              placeholder="Your name"
+              className="w-full px-5 py-4 bg-primary/30 border border-border rounded-xl focus:outline-none focus:border-accent focus:bg-transparent transition-all duration-300 text-sm placeholder:text-text-secondary/50"
+              placeholder="What's this about?"
               required
             />
           </div>
           
-          <div>
-            <label htmlFor="email" className="block mb-1 text-sm font-medium text-text-primary">
-              Email
+          <div className="form-group flex flex-col gap-2">
+            <label htmlFor="message" className="text-[0.65rem] font-black uppercase tracking-[0.2em] text-text-secondary ml-2">
+              Message
             </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-border-gray rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-200"
-              placeholder="your@email.com"
+              className="w-full px-5 py-4 bg-primary/30 border border-border rounded-xl focus:outline-none focus:border-accent focus:bg-transparent transition-all duration-300 text-sm placeholder:text-text-secondary/50 h-32 resize-none"
+              placeholder="Your message..."
               required
             />
           </div>
-        </div>
-        
-        <div>
-          <label htmlFor="subject" className="block mb-1 text-sm font-medium text-text-primary">
-            Subject
-          </label>
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-border-gray rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-200"
-            placeholder="What's this about?"
-            required
-          />
-        </div>
-        
-        <div>
-          <label htmlFor="message" className="block mb-1 text-sm font-medium text-text-primary">
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-border-gray rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-200 h-32 resize-y"
-            placeholder="Your message..."
-            required
-          />
-        </div>
-        
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full flex justify-center items-center px-6 py-3 bg-accent text-white font-medium rounded-md hover:bg-accent-dark transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {isSubmitting ? (
-            <>
-              Sending...
-            </>
-          ) : (
-            "Send Message"
-          )}
-        </button>
-      </form>
-      
-
+          
+          <div className="form-group pt-4">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="relative overflow-hidden flex items-center justify-center gap-3 w-full sm:w-auto border border-border rounded-full px-8 py-4 text-xs font-bold text-text-primary hover:text-white transition-colors duration-300 group/btn disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+            >
+              <div className="absolute inset-0 bg-accent translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-out z-0" />
+              <Send size={15} className={`relative z-10 ${isSubmitting ? 'animate-pulse' : 'group-hover/btn:-translate-y-1 group-hover/btn:translate-x-1 transition-transform duration-300'}`} />
+              <span className="relative z-10 uppercase tracking-widest">
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
     </section>
   );
 };
