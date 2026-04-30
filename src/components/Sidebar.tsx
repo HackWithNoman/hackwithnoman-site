@@ -49,8 +49,8 @@ const Sidebar = ({ onNavClick }: SidebarProps) => {
       animate="show"
       className="w-full p-6 lg:p-8 bg-primary md:h-screen md:overflow-y-auto md:border-r md:border-black/12 md:shadow-[4px_0_24px_-2px_rgba(0,0,0,0.03)] flex flex-col md:sticky md:top-0"
     >
-      {/* Profile Section */}
-      <motion.div variants={itemVariants} className="flex flex-col items-start mb-2 px-3">
+      {/* Profile Section - Architectural Status Ring */}
+      <motion.div variants={itemVariants} className="px-3 mb-10">
         <a 
           href="#"
           onClick={(e) => {
@@ -58,26 +58,31 @@ const Sidebar = ({ onNavClick }: SidebarProps) => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
             if (onNavClick) onNavClick();
           }}
-          className="group inline-block mb-5 relative"
+          className="group flex flex-col gap-4"
         >
-          <div className="w-20 h-20 rounded-full bg-border overflow-hidden ring-2 ring-transparent group-hover:ring-accent transition-all duration-300 p-1">
-            <div className="w-full h-full rounded-full overflow-hidden bg-white">
-              <Image
-                src="/avatar.jpg"
-                alt="Noman"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                width={500}
-                height={500}
-              />
+          <div className="relative w-14 h-14 flex items-center justify-center">
+            {/* Pulsing Signal Rings */}
+            <div className="absolute inset-0 rounded-full border-2 border-accent/20 animate-[ping_3s_ease-in-out_infinite]" />
+            <div className="absolute inset-0 rounded-full border border-accent/40" />
+            
+            {/* Avatar Circle */}
+            <div className="relative w-12 h-12 rounded-full bg-white border border-border overflow-hidden p-0.5 group-hover:border-accent transition-all duration-500 shadow-sm">
+              <div className="w-full h-full rounded-full overflow-hidden bg-light">
+                <Image
+                  src="/avatar.jpg"
+                  alt="Noman"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  width={500}
+                  height={500}
+                />
+              </div>
             </div>
           </div>
+          
+          <h1 className="text-[0.75rem] font-black text-text-primary tracking-tight group-hover:text-accent transition-colors duration-300">
+            <span className="text-accent opacity-50 mr-0.5">@</span>HackWithNoman
+          </h1>
         </a>
-        <h1 className="text-[1.5rem] font-extrabold text-text-primary tracking-tight mt-4">Noman</h1>
-        <p className=" text-xs font-semibold text-accent mt-1 tracking-wide">Front-End Developer</p>
-        <div className="text-xs flex items-center gap-1.5 text-text-secondary mt-2 tracking-wide">
-          <MapPin size={14} />
-          <span>Dhaka, Bangladesh</span>
-        </div>
       </motion.div>
 
       <motion.hr variants={itemVariants} className="border-border my-6" />
