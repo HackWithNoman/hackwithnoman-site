@@ -20,8 +20,8 @@ const HeroSection = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    show: { 
-      opacity: 1, 
+    show: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.8,
@@ -32,7 +32,7 @@ const HeroSection = () => {
 
   return (
     <section className="py-20 md:py-28" id="home">
-      <motion.div 
+      <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="show"
@@ -53,9 +53,10 @@ const HeroSection = () => {
         <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 border-t border-border pt-12">
           <div className="space-y-8">
             <p className="text-3xl md:text-5xl font-bold text-text-primary leading-[1.1] tracking-tight">
-              Crafting immersive digital <span className="text-accent italic font-serif lowercase tracking-normal">experiences</span> with modern technologies.
+              Building <span className="text-accent italic font-serif lowercase tracking-normal"> user-focused </span>
+              web apps with React and Node.js
             </p>
-            
+
             <div className="flex flex-wrap gap-5">
               <motion.a
                 href="#"
@@ -94,7 +95,7 @@ const HeroSection = () => {
 
           <div className="space-y-10">
             <p className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-md">
-              I specialize in building high-performance, accessible user interfaces using **React, Next.js, and Tailwind CSS**. Currently seeking my first professional role as an **Intern or Junior Front-End Developer**.
+              I enjoy building fast, accessible interfaces with React and Next.js, and I have experience working across MERN and PERN stacks. I’m currently seeking my first opportunity as an Intern or Junior Front-End Developer.
             </p>
 
             <div className="grid grid-cols-2 gap-8">
@@ -106,7 +107,7 @@ const HeroSection = () => {
                 <span className="text-[0.65rem] font-black uppercase tracking-[0.2em] text-text-secondary">Status</span>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                  <p className="text-sm font-bold text-text-primary">Seeking Intern/Junior Role</p>
+                  <p className="text-sm font-bold text-text-primary">Open to Opportunities</p>
                 </div>
               </div>
             </div>
