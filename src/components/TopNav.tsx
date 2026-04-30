@@ -123,19 +123,25 @@ const TopNav = () => {
             }}
             className="flex items-center gap-3 group"
           >
-            <div className="w-10 h-10 rounded-full bg-border overflow-hidden ring-2 ring-transparent group-hover:ring-accent transition-all duration-300 p-0.5">
-              <div className="w-full h-full rounded-full overflow-hidden bg-white">
-                <Image
-                  src="/avatar.jpg"
-                  alt="Noman"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  width={40}
-                  height={40}
-                />
+            <div className="relative w-10 h-10 flex items-center justify-center">
+              {/* Pulsing Signal Rings */}
+              <div className="absolute inset-0 rounded-full border-2 border-accent/20 animate-[ping_3s_ease-in-out_infinite]" />
+              <div className="absolute inset-0 rounded-full border border-accent/40" />
+              
+              <div className="relative w-8 h-8 rounded-full bg-white border border-border overflow-hidden p-0.5 group-hover:border-accent transition-all duration-500 shadow-sm">
+                <div className="w-full h-full rounded-full overflow-hidden bg-light">
+                  <Image
+                    src="/avatar.jpg"
+                    alt="Noman"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    width={32}
+                    height={32}
+                  />
+                </div>
               </div>
             </div>
-            <h1 className="text-[1.125rem] font-extrabold text-text-primary tracking-tight">
-              Noman
+            <h1 className="text-[0.85rem] md:text-[0.9rem] font-black text-text-primary tracking-tight group-hover:text-accent transition-colors duration-300">
+              <span className="text-accent opacity-50 mr-0.5">@</span>HackWithNoman
             </h1>
           </a>
 
@@ -201,18 +207,24 @@ const TopNav = () => {
             {/* Header inside menu */}
             <div className="flex items-center justify-between p-6 border-b border-border">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-border overflow-hidden p-0.5">
-                  <div className="w-full h-full rounded-full overflow-hidden bg-white">
-                    <Image
-                      src="/avatar.jpg"
-                      alt="Noman"
-                      className="w-full h-full object-cover"
-                      width={32}
-                      height={32}
-                    />
+                <div className="relative w-9 h-9 flex items-center justify-center">
+                  <div className="absolute inset-0 rounded-full border-2 border-accent/20 animate-[ping_3s_ease-in-out_infinite]" />
+                  <div className="absolute inset-0 rounded-full border border-accent/40" />
+                  <div className="relative w-7 h-7 rounded-full bg-white border border-border overflow-hidden p-0.5">
+                    <div className="w-full h-full rounded-full overflow-hidden bg-light">
+                      <Image
+                        src="/avatar.jpg"
+                        alt="Noman"
+                        className="w-full h-full object-cover"
+                        width={28}
+                        height={28}
+                      />
+                    </div>
                   </div>
                 </div>
-                <span className="font-extrabold text-text-primary tracking-tight">Navigation</span>
+                <span className="text-[0.85rem] font-black text-text-primary tracking-tight">
+                  <span className="text-accent opacity-50 mr-0.5">@</span>HackWithNoman
+                </span>
               </div>
               <button
                 onClick={closeMobileMenu}
