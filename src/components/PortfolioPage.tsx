@@ -8,6 +8,7 @@ import BlogNotesSection from "./BlogNotesSection";
 import ProjectsSection from "./ProjectsSection";
 import SkillsSection from "./SkillsSection";
 import ContactSection from "./ContactSection";
+import BackToTop from "./BackToTop";
 
 const PortfolioPage = () => {
   return (
@@ -33,6 +34,9 @@ const PortfolioPage = () => {
           <ContactSection />
         </main>
       </div>
+
+      {/* Back to Top Component */}
+      <BackToTop />
     </div>
   );
 };
