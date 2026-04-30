@@ -2,7 +2,7 @@
 
 import React, { useState, ChangeEvent, FormEvent, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -77,20 +77,17 @@ const ContactSection = () => {
 
   return (
     <section className="py-20" id="contact">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        <div className="flex items-center gap-4 mb-16">
-          <div className="flex items-center gap-2">
-            <Sparkles size={18} className="text-accent" />
-            <h2 className="text-2xl font-black text-text-primary tracking-tight">Let's Connect</h2>
-          </div>
-          <div className="h-[1px] flex-1 bg-border" />
+        <div className="mb-20 group select-none">
+           <div className="flex items-center gap-3 mb-2">
+              <span className="text-3xl md:text-4xl font-black text-transparent [-webkit-text-stroke:1px_var(--color-border)] group-hover:[-webkit-text-stroke:1px_var(--color-accent)] transition-all duration-500 leading-none">
+                05
+              </span>
+              <div className="h-[1px] w-12 bg-border group-hover:bg-accent/50 transition-all duration-500" />
+           </div>
+           <h2 className="text-4xl md:text-6xl font-black text-text-primary tracking-tighter uppercase leading-none">
+             Connect
+           </h2>
         </div>
-      </motion.div>
       
       <div ref={containerRef} className="max-w-2xl">
         <AnimatePresence mode="wait">
