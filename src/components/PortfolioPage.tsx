@@ -29,7 +29,7 @@ const PortfolioPage = () => {
           <AboutSection />
           <BlogNotesSection />
           <ProjectsSection />
-           <SkillsSection />
+          <SkillsSection />
           <ContactSection />
         </main>
       </div>
