@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
 import {
   Code2,
   PenTool,
@@ -8,6 +10,7 @@ import {
   Brain,
   Zap,
   Award,
+  Sparkles
 } from "lucide-react";
 import {
   SiTypescript,
@@ -19,56 +22,97 @@ import {
   SiExpress,
   SiNodedotjs,
 } from "react-icons/si";
+import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const skills = [
-  // Frontend Development
-  { icon: SiReact, label: "React", category: "Frontend" },
-  { icon: SiTypescript, label: "TypeScript", category: "Frontend" },
-  { icon: SiTailwindcss, label: "Tailwind CSS", category: "Frontend" },
-  { icon: SiNextdotjs, label: "Next.js", category: "Frontend" },
-
-  // Backend Development
-  { icon: SiNodedotjs, label: "Node.js", category: "Backend" },
-  { icon: SiExpress, label: "Express.js", category: "Backend" },
-  { icon: SiPostgresql, label: "PostgreSQL", category: "Backend" },
-  { icon: SiMongodb, label: "MongoDB", category: "Backend" },
-
-  // Other Skills
-  { icon: Code2, label: "Web Development", category: "Core" },
-  { icon: PenTool, label: "Technical Writing", category: "Core" },
-  { icon: Coffee, label: "Open Source", category: "Core" },
-  { icon: Heart, label: "Community Building", category: "Core" },
-  { icon: Globe, label: "Accessibility", category: "Core" },
-  { icon: Brain, label: "Problem Solving", category: "Core" },
-  { icon: Zap, label: "Performance Optimization", category: "Core" },
-  { icon: Award, label: "UI/UX Design", category: "Core" },
+  { icon: SiReact, label: "React" },
+  { icon: SiNextdotjs, label: "Next.js" },
+  { icon: SiTypescript, label: "TypeScript" },
+  { icon: SiTailwindcss, label: "Tailwind CSS" },
+  { icon: SiNodedotjs, label: "Node.js" },
+  { icon: SiExpress, label: "Express.js" },
+  { icon: SiPostgresql, label: "PostgreSQL" },
+  { icon: SiMongodb, label: "MongoDB" },
+  { icon: Code2, label: "Web Dev" },
+  { icon: Award, label: "UI/UX" },
+  { icon: Zap, label: "Performance" },
+  { icon: Globe, label: "A11y" },
+  { icon: PenTool, label: "Tech Writing" },
+  { icon: Coffee, label: "Open Source" },
+  { icon: Heart, label: "Community" },
+  { icon: Brain, label: "Problem Solving" },
 ];
 
 const SkillsSection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".skill-item", {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 85%",
+        },
+        y: 20,
+        opacity: 0,
+        duration: 0.5,
+        stagger: {
+          amount: 0.6,
+          grid: "auto",
+          from: "start"
+        },
+        ease: "power2.out",
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="mb-12">
-      <h2 className="text-2xl font-bold mb-4">Skills & Expertise</h2>
-      <hr className="border-border mb-6" />
+    <section className="py-20" id="skills">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <div className="flex items-center gap-4 mb-16">
+          <div className="flex items-center gap-2">
+            <Sparkles size={18} className="text-accent" />
+            <h2 className="text-2xl font-black text-text-primary tracking-tight">Skills & Tools</h2>
+          </div>
+          <div className="h-[1px] flex-1 bg-border" />
+        </div>
+      </motion.div>
       
-      <div className="flex flex-wrap gap-3">
+      {/* Collapsed Border Grid */}
+      <div ref={containerRef} className="grid grid-cols-2 md:grid-cols-4 border-l border-t border-border w-full">
         {skills.map((skill) => {
           const Icon = skill.icon;
-          // Check if it's an si icon (from react-icons/si) by checking if the display name starts with Si
-          const isSiIcon = Icon.name && Icon.name.startsWith('Si');
+          // @ts-ignore
+          const isSiIcon = Icon.name && Icon.name.startsWith("Si");
+          
           return (
-            <span
+            <div
               key={skill.label}
-              className="border border-border rounded px-3 py-2 text-sm flex items-center gap-2 bg-white hover:border-border-gray transition-colors"
+              className="skill-item group border-r border-b border-border p-8 md:p-10 flex flex-col items-center justify-center gap-4 bg-transparent hover:bg-primary transition-colors duration-300"
             >
-              {isSiIcon ? (
-                // For react-icons/si components
-                <Icon size={14} className="text-accent" />
-              ) : (
-                // For lucide-react components
-                <Icon size={14} strokeWidth={1.5} className="text-accent" />
-              )}
-              <span className="text-text-primary">{skill.label}</span>
-            </span>
+              <div className="text-text-secondary group-hover:text-accent group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-300 ease-out">
+                {isSiIcon ? (
+                  <Icon size={28} />
+                ) : (
+                  <Icon size={28} strokeWidth={1.5} />
+                )}
+              </div>
+              <span className="text-[0.65rem] font-black uppercase tracking-[0.2em] text-text-primary group-hover:text-accent transition-colors text-center">
+                {skill.label}
+              </span>
+            </div>
           );
         })}
       </div>
