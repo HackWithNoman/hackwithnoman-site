@@ -1,13 +1,12 @@
 "use client";
 
-import React from "react";
 import { Download, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const HeroSection = () => {
   // Framer Motion Variants for a unified, snappy reveal
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -18,7 +17,7 @@ const HeroSection = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: {
       opacity: 1,
